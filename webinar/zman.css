@@ -104,6 +104,8 @@ html body .science figure.chart{background:linear-gradient(165deg,var(--sf-8),va
 .offer .vstack .row > span:last-child{color:var(--a1)}
 .vstack .row > span:first-child span{color:inherit;font-weight:inherit}
 .pricecard .now{font-variant-numeric:tabular-nums}
+/* the payments lead, and the full price sits right under them */
+.pc__pay{margin:0 0 2px;font-weight:700;font-size:clamp(18px,2.2vw,22px);color:var(--t-hi)}
 .pc__diag{margin-top:18px;font-weight:500;font-size:clamp(16px,1.9vw,18px);color:var(--t-hi)}
 .pc__diag b{color:var(--a1);font-weight:900}
 .promise{display:flex;gap:12px;align-items:flex-start;max-width:470px;margin:22px auto 0;padding:16px 18px;border-radius:16px;text-align:right;
