@@ -9,11 +9,11 @@
 
 | תיקייה | מה זה | הכתובת החיה |
 |---|---|---|
-| `webinar/` | דף ההרשמה לוובינר (מבוגרים), דף ההורים (`horim.html`) ודף התודה (`todah.html`) | https://shirley-webinar-psi.vercel.app |
-| `parents-course/` | דף הקורס הדיגיטלי להורים לילדי קשב | https://shirley-parents-course-teal.vercel.app |
+| `webinar/` | דף ההרשמה לוובינר (מבוגרים), דף ההורים (`horim.html`), דף קורס ארגון הזמן (`zman.html`) ודף התודה (`todah.html`) | https://shirley-webinar.vercel.app |
+| `parents-course/` | דף הקורס הדיגיטלי להורים לילדי קשב | https://shirley-parents-course.vercel.app |
 | השורש (`index.html`) | דף הפתיחה של המרחב | לא עולה לאוויר (אין לו פרויקט בוורסל של שירלי) |
 
-**מאז 25.10.2026 המאגר והאתרים בחשבונות של שירלי:** המאגר https://github.com/shirleyhershko/shirley-hershko (מור שותף בו), ושני הפרויקטים בוורסל של שירלי (shirley-webinar ו-shirley-parents-course). המאגר הישן אצל מור, mor-nextlevel/shirley-hershko, כבר לא מתעדכן. כשמור יפנה את הכתובות הישנות (shirley-webinar.vercel.app ו-shirley-parents-course.vercel.app), מוסיפים אותן לפרויקטים של שירלי ב-Settings > Domains.
+**מאז 25.10.2026 המאגר והאתרים בחשבונות של שירלי:** המאגר https://github.com/shirleyhershko/shirley-hershko (מור שותף בו), ושני הפרויקטים בוורסל של שירלי (shirley-webinar ו-shirley-parents-course). המאגר הישן אצל מור, mor-nextlevel/shirley-hershko, כבר לא מתעדכן. הכתובות הישנות (shirley-webinar.vercel.app ו-shirley-parents-course.vercel.app) חוברו לפרויקטים של שירלי ב-25.10.2026, וגם הכתובות shirley-webinar-psi.vercel.app ו-shirley-parents-course-teal.vercel.app ממשיכות לעבוד.
 
 שינוי בתיקייה של דף עולה לכתובת של אותו דף. דף ההרשמה לוובינר כבר מקבל תנועה, אז בודקים אותו בטלפון אחרי כל שינוי.
 

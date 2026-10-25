@@ -1,0 +1,150 @@
+/* קורס ארגון הזמן (zman.html): הצבעים של דף המבוגרים, ורק הרכיבים שאין בדפים האחרים. נטען אחרי lp.css */
+
+/* hero: the photo of Shirley writing, in a frame inside the rings */
+.portrait.photo{aspect-ratio:4/5}
+.portrait.photo .frame{position:absolute;inset:6% 8% 0;border-radius:28px;overflow:hidden;border:1px solid var(--a2-line);
+  box-shadow:0 50px 110px -44px rgba(0,0,0,.95),0 0 80px -34px rgba(var(--a1-rgb),.45)}
+.portrait.photo .frame img{position:static;transform:none;width:100%;height:100%;object-fit:cover;object-position:50% 30%;max-width:none}
+html body .hero__pre{max-width:640px}
+
+/* "מזדהה עם משהו מפה?": seven small cards, an icon and her line */
+.asks{text-align:center}
+.askgrid{display:grid;gap:14px;max-width:980px;margin:clamp(30px,4.4vw,50px) auto 0;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.ask{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:18px;text-align:right;
+  background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(var(--ivory-rgb),.09)}
+.ask svg{flex:none;width:34px;height:34px;fill:none;stroke:var(--a1);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ask p{font-weight:500;font-size:clamp(17px,1.9vw,19px);line-height:1.4;color:var(--t-hi)}
+.asks__end{margin-top:clamp(30px,4vw,44px);font-weight:900;font-size:clamp(21px,2.8vw,28px);line-height:1.4;text-wrap:balance}
+
+/* "מתחילים להשקות את הגינה": a watering can in the middle of the notes */
+.can .can__body,.can .can__spout,.can .can__handle,.can .can__rose{fill:none;stroke:var(--ivory);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.can .can__body{fill:rgba(var(--a1-rgb),.16)}
+.can .can__tilt{transform-origin:120px 130px;animation:canTilt 5s ease-in-out infinite}
+.can .drop{fill:var(--a2);opacity:0;animation:drop 1.6s ease-in infinite;animation-delay:var(--d)}
+@keyframes canTilt{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-12deg)}}
+@keyframes drop{0%{opacity:0;transform:translateY(0)}15%{opacity:1}100%{opacity:0;transform:translateY(70px)}}
+
+/* the mouse on the wheel, and the flea that stopped jumping */
+.wheel,.jar{width:min(170px,44vw);margin:clamp(24px,3.4vw,36px) auto 0}
+.wheel svg,.jar svg{display:block;width:100%;height:auto;overflow:visible}
+.wheel .wheel__spin{transform-origin:60px 60px;animation:spinR 2.4s linear infinite}
+.wheel .wheel__spin circle,.wheel .wheel__spin path,.wheel .wheel__stand{fill:none;stroke:rgba(var(--ivory-rgb),.55);stroke-width:3;stroke-linecap:round}
+.wheel .wheel__hub{fill:var(--ivory)}
+.wheel .wheel__mouse{fill:var(--a1);animation:hop .3s ease-in-out infinite alternate}
+@keyframes hop{to{transform:translateY(-3px)}}
+.jar .jar__glass{fill:rgba(var(--ivory-rgb),.05);stroke:rgba(var(--ivory-rgb),.6);stroke-width:3;stroke-linejoin:round}
+.jar .jar__lid{fill:var(--a2);transform-box:fill-box;transform-origin:100% 100%;transform:translate(34px,-4px) rotate(28deg)}
+.jar .jar__ceil{stroke:var(--a1);stroke-width:2;stroke-dasharray:5 6;opacity:.9}
+.jar .jar__flea{fill:var(--a1);animation:flea 1.1s cubic-bezier(.3,0,.5,1) infinite alternate}
+@keyframes flea{from{transform:translateY(0)}to{transform:translateY(-92px)}}
+
+/* the research chart, drawn again in the brand colours */
+.chart{max-width:760px}
+.chart__src{margin-inline-start:auto;font-size:13px;color:var(--t-low)}
+.chart__svg{display:block;width:100%;height:auto;padding:14px 8px 0}
+.chart__svg .grid line{stroke:rgba(var(--ivory-rgb),.09);stroke-width:1}
+.chart__svg .ax{fill:var(--t-low);font-size:15px;font-family:Heebo,sans-serif}
+.chart__svg .ln{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2s var(--ease-out)}
+.chart__svg .ln:nth-of-type(2){transition-delay:.2s}.chart__svg .ln:nth-of-type(3){transition-delay:.4s}.chart__svg .ln:nth-of-type(4){transition-delay:.6s}.chart__svg .ln:nth-of-type(5){transition-delay:.8s}
+.chart.in .ln,.no-js .chart .ln{stroke-dashoffset:0}
+.chart__svg .lb{font-family:Heebo,sans-serif;font-size:16px;font-weight:700;opacity:0;transition:opacity .8s ease 1.6s}
+.chart.in .lb,.no-js .chart .lb{opacity:1}
+.chart__svg .c1{color:var(--a1)}.chart__svg .c2{color:var(--ivory)}.chart__svg .c3{color:var(--a2)}.chart__svg .c4{color:#a3a3a3}.chart__svg .c5{color:#737373}
+.chart__svg path.ln{stroke:currentColor;fill:none}.chart__svg text.lb{fill:currentColor;stroke:none}
+html body .science figure.chart{background:linear-gradient(165deg,var(--sf-8),var(--sf-1))}
+.chart .browser__bar{align-items:center;background:var(--sf-7)}
+.chart figcaption{text-align:center}
+
+/* the good news and the woodcutters */
+.news .close{margin-top:clamp(26px,3.6vw,38px);font-weight:900;font-size:clamp(24px,3.4vw,36px);line-height:1.3}
+.news .said{margin-top:clamp(22px,3vw,34px);font-size:clamp(26px,4.4vw,46px)}
+
+/* "למה זה עוד לא הצליח?": cards with a red X */
+.nopes{text-align:center}
+.xgrid{display:grid;gap:16px;max-width:980px;margin:clamp(30px,4.4vw,50px) auto 0;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));text-align:right}
+.xcard{position:relative;padding:22px 22px 22px;border-radius:20px;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(var(--ivory-rgb),.09)}
+.xcard__x{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(var(--a1-rgb),.14);border:1px solid rgba(var(--a1-rgb),.5)}
+.xcard__x svg{width:16px;height:16px;fill:none;stroke:var(--a1);stroke-width:3;stroke-linecap:round}
+.xcard h4{margin-top:12px;font-size:clamp(19px,2.1vw,22px);line-height:1.25}
+.xcard p{margin-top:8px;font-weight:300;font-size:clamp(16px,1.7vw,17.5px);line-height:1.6;color:var(--t-mid)}
+
+/* "שיטת רק רגע": a stopwatch whose ring fills when it comes into view */
+.method{text-align:center}
+.watch{position:relative;width:min(220px,58vw);aspect-ratio:1;margin:clamp(28px,4vw,44px) auto 0}
+.watch svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.watch .tr{fill:none;stroke:rgba(var(--ivory-rgb),.12);stroke-width:7}
+.watch .fl{fill:none;stroke:var(--a1);stroke-width:7;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transform:rotate(-90deg);transform-origin:100px 108px;transition:stroke-dashoffset 2.2s var(--ease-out) .3s;filter:drop-shadow(0 0 10px rgba(var(--a1-rgb),.7))}
+.watch.in .fl,.no-js .watch .fl{stroke-dashoffset:0}
+.watch .knob{fill:none;stroke:var(--ivory);stroke-width:6;stroke-linecap:round}
+.watch .hand{stroke:var(--ivory);stroke-width:4;stroke-linecap:round;transform-origin:100px 108px;transform:rotate(0deg);transition:transform 2.2s var(--ease-out) .3s}
+.watch.in .hand{transform:rotate(360deg)}
+.watch .pin{fill:var(--a1)}
+.watch__t{position:absolute;left:0;right:0;top:64%;font-weight:900;font-size:clamp(17px,2.2vw,21px);color:var(--t-hi)}
+.method .sofar{max-width:520px}
+
+/* road map: three meetings, a week of practice after the first two */
+.zman .road__track{grid-auto-rows:auto}
+.week{display:inline-block;margin-top:14px;font-weight:700;font-size:14px;color:var(--a2-soft);padding:6px 14px;border-radius:999px;border:1px dashed var(--a2-line)}
+.stop__thumb{display:block;width:min(220px,70%);margin:16px auto 0;border-radius:14px;border:1px solid var(--a2-line);box-shadow:0 20px 40px -20px rgba(0,0,0,.9)}
+
+/* bonuses without product shots: an icon on top, and the audiobook covers on bonus 4 */
+.bonus5{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));max-width:1100px;margin-inline:auto}
+.bcard__ico{display:grid;place-items:center;height:130px;background:radial-gradient(70% 80% at 50% 100%,rgba(var(--a1-rgb),.16),transparent 70%)}
+.bcard__ico svg{width:56px;height:56px;fill:none;stroke:var(--ivory);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 14px rgba(var(--a1-rgb),.6))}
+.bcard__covers{display:flex;justify-content:center;align-items:flex-end;gap:8px;height:130px;padding:16px 16px 0;background:radial-gradient(70% 80% at 50% 100%,rgba(var(--a1-rgb),.16),transparent 70%)}
+.bcard__covers img{width:22%;max-width:70px;border-radius:4px;box-shadow:0 12px 22px -10px rgba(0,0,0,.9)}
+.bonus5 .bcard h4{font-size:clamp(19px,2.2vw,23px)}
+
+/* the testimonial video stands up (it was shot on a phone) */
+.talkvid--tall{max-width:380px}
+.talkvid--tall .talkvid__frame{aspect-ratio:9/16}
+
+/* price anchor without prices, the offer and the promise */
+.anchor .bill .t{font-weight:500}
+.offer .vstack .row > span:last-child{color:var(--a1)}
+.vstack .row > span:first-child span{color:inherit;font-weight:inherit}
+.pricecard .now{font-variant-numeric:tabular-nums}
+.pc__diag{margin-top:18px;font-weight:500;font-size:clamp(16px,1.9vw,18px);color:var(--t-hi)}
+.pc__diag b{color:var(--a1);font-weight:900}
+.promise{display:flex;gap:12px;align-items:flex-start;max-width:470px;margin:22px auto 0;padding:16px 18px;border-radius:16px;text-align:right;
+  background:rgba(var(--ivory-rgb),.04);border:1px solid rgba(var(--ivory-rgb),.1)}
+.promise svg{flex:none;width:30px;height:30px;fill:none;stroke:var(--a1);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.promise p{font-weight:300;font-size:clamp(15.5px,1.7vw,17px);line-height:1.6;color:var(--t-hi)}
+.offer .seat{margin-top:clamp(30px,4vw,46px)}
+
+/* the funnel: one bottle fills neatly, the other spills */
+.funnel{width:min(420px,88vw);margin:clamp(28px,4vw,44px) auto 0}
+.funnel svg{display:block;width:100%;height:auto;overflow:visible}
+.funnel .bt{fill:rgba(var(--ivory-rgb),.05);stroke:rgba(var(--ivory-rgb),.6);stroke-width:3;stroke-linejoin:round}
+.funnel .fn{fill:rgba(var(--a1-rgb),.2);stroke:var(--a1);stroke-width:3;stroke-linejoin:round}
+.funnel .st{stroke:var(--a2);stroke-width:4;stroke-linecap:round;stroke-dasharray:6 8;animation:pour .6s linear infinite}
+.funnel .wt{fill:rgba(var(--a2-rgb),.35)}
+.funnel .sp{fill:var(--a2);opacity:0;animation:splash 1.4s ease-in infinite;animation-delay:var(--d)}
+@keyframes pour{to{stroke-dashoffset:-14}}
+@keyframes splash{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(var(--x),74px)}}
+.x37{margin:clamp(8px,1.4vw,14px) auto 0;font-weight:300;font-size:clamp(20px,2.6vw,26px);color:var(--t-hi)}
+.x37 b{display:block;font-weight:900;font-size:clamp(64px,11vw,120px);line-height:1;color:var(--a1);text-shadow:0 0 40px rgba(var(--a1-rgb),.45)}
+.mech .close{margin-top:clamp(26px,3.6vw,38px);font-weight:900;font-size:clamp(24px,3.4vw,36px);line-height:1.3}
+
+/* the form says thank you on the page itself (the leads go to Shirley, not to the webinar thank-you page) */
+.seat__thanks{margin-top:18px;padding:16px 18px;border-radius:16px;font-weight:500;font-size:clamp(16px,1.9vw,18px);line-height:1.6;color:var(--t-hi);background:rgba(var(--ok-rgb),.12);border:1px solid rgba(var(--ok-rgb),.45)}
+
+@media (prefers-reduced-motion:reduce){
+  .can .can__tilt,.can .drop,.wheel .wheel__spin,.wheel .wheel__mouse,.jar .jar__flea,.funnel .st,.funnel .sp{animation:none}
+  .can .drop,.funnel .sp{opacity:0}
+}
+
+/* first names under the messages, and the "רק רגע" plate in the about steps */
+.pf__by{margin-top:14px;font-weight:700;font-size:15px;color:var(--a2-soft)}
+.plate--watch{display:flex;align-items:center;justify-content:center;gap:12px}
+.plate--watch svg{width:44px;height:44px;fill:none;stroke:var(--a1);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.plate--watch b{font-weight:900;font-size:clamp(24px,3vw,32px);color:var(--t-hi)}
+html body .shot.shot--note{aspect-ratio:16/9;width:min(100%,460px)}
+html body .shot.shot--note img{object-position:50% 50%}
+.seat__when + .cd{margin-top:16px}
+/* long lines on this page break into even lines */
+.said,.news h2,.statrail p,.asks__end,.close{text-wrap:balance}
+.statrail p{font-size:clamp(19px,2.6vw,26px)}
+.plate--icon{display:flex;align-items:center;justify-content:center;gap:12px}
+.plate--icon svg{width:40px;height:40px;fill:none;stroke:var(--a1);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.plate--icon b{font-weight:700;font-size:clamp(17px,2vw,20px);color:var(--t-hi);line-height:1.3;text-align:right}
