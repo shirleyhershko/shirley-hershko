@@ -9,9 +9,11 @@
 
 | תיקייה | מה זה | הכתובת החיה |
 |---|---|---|
-| `webinar/` | דף ההרשמה לוובינר, ודף התודה שלו (`todah.html`) | https://shirley-webinar.vercel.app |
-| `parents-course/` | דף הקורס הדיגיטלי להורים לילדי קשב | https://shirley-parents-course.vercel.app |
-| השורש (`index.html`) | דף הפתיחה של המרחב | https://nl-shirley-hershko.vercel.app |
+| `webinar/` | דף ההרשמה לוובינר (מבוגרים), דף ההורים (`horim.html`) ודף התודה (`todah.html`) | https://shirley-webinar-psi.vercel.app |
+| `parents-course/` | דף הקורס הדיגיטלי להורים לילדי קשב | https://shirley-parents-course-teal.vercel.app |
+| השורש (`index.html`) | דף הפתיחה של המרחב | לא עולה לאוויר (אין לו פרויקט בוורסל של שירלי) |
+
+**מאז 25.10.2026 המאגר והאתרים בחשבונות של שירלי:** המאגר https://github.com/shirleyhershko/shirley-hershko (מור שותף בו), ושני הפרויקטים בוורסל של שירלי (shirley-webinar ו-shirley-parents-course). המאגר הישן אצל מור, mor-nextlevel/shirley-hershko, כבר לא מתעדכן. כשמור יפנה את הכתובות הישנות (shirley-webinar.vercel.app ו-shirley-parents-course.vercel.app), מוסיפים אותן לפרויקטים של שירלי ב-Settings > Domains.
 
 שינוי בתיקייה של דף עולה לכתובת של אותו דף. דף ההרשמה לוובינר כבר מקבל תנועה, אז בודקים אותו בטלפון אחרי כל שינוי.
 
@@ -127,6 +129,8 @@ git push
 
 ## חוסכים העלאות בוורסל
 
+מאז 25.10.2026 האתרים בחשבון ורסל של שירלי (חבילת Hobby, עד 100 העלאות ביום). בכל פרויקט מוגדר Ignored Build Step, כך שדחיפה בונה רק את הפרויקט שהתיקייה שלו השתנתה. דחיפה שמשנה רק קבצי md לא בונה כלום.
+
 בחבילה החינמית של ורסל יש תקרה של העלאות ביום, וכל דחיפה נספרת בכל פרויקט שמחובר לתיקייה (טיוטה נספרת כמו העלאה לדף החי). ב-24.10.2026 הגענו לתקרה וההעלאות נחסמו ל-24 שעות. לכן:
 
 - עושים סבב תיקונים שלם, בודקים אותו מקומית (שרת מקומי על התיקייה `webinar`), ודוחפים פעם אחת בסוף הסבב. לא דוחפים אחרי כל תיקון קטן.
@@ -135,5 +139,5 @@ git push
 ## קישור תצוגה לטיוטה
 
 כל ענף טיוטה מקבל מוורסל קישור תצוגה שנפתח בלי התחברות, למשל:
-`https://shirley-webinar-git-<שם-הענף>-morweitzmans-projects.vercel.app`
+`https://shirley-webinar-git-<שם-הענף>-shirley-hershko.vercel.app`
 שולחים אותו לשירלי כדי שתראה את הטיוטה בעיצוב המלא לפני שמאחדים לדף החי.
