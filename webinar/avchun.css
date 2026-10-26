@@ -1,0 +1,205 @@
+/* אבחון הפרעת קשב למבוגרים (avchun.html): הצבעים של דף המבוגרים, ורק הרכיבים שאין בדפים האחרים. נטען אחרי lp.css */
+
+/* hero: Shirley at home with the laptop, in a frame inside the rings */
+.portrait.photo{aspect-ratio:4/5}
+.portrait.photo .frame{position:absolute;inset:6% 8% 0;border-radius:28px;overflow:hidden;border:1px solid var(--a2-line);
+  box-shadow:0 50px 110px -44px rgba(0,0,0,.95),0 0 80px -34px rgba(var(--a1-rgb),.45)}
+.portrait.photo .frame img{position:static;transform:none;width:100%;height:100%;object-fit:cover;object-position:60% 40%;max-width:none}
+html body .hero__pre{max-width:640px}
+.hero__q{margin-top:10px;font-weight:900;font-size:clamp(25px,5.4vw,40px);line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+.hero__never{margin-top:12px;font-weight:700;font-size:clamp(19px,2.6vw,24px);color:var(--t-hi);text-wrap:balance}
+.hfacts{list-style:none;display:grid;gap:10px;margin:clamp(20px,3vw,28px) 0 clamp(22px,3vw,30px);padding:0}
+.hfacts li{display:flex;align-items:center;gap:12px;font-weight:500;font-size:clamp(16px,1.9vw,18px);color:var(--t-hi)}
+.hfacts svg{flex:none;width:26px;height:26px;padding:5px;border-radius:50%;fill:none;stroke:var(--a1);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;
+  background:rgba(var(--a1-rgb),.12);border:1px solid rgba(var(--a1-rgb),.45)}
+.hero .ctanote{margin-top:14px}
+
+/* "מכירים את התחושה?": six cards, an icon and a line */
+.asks{text-align:center}
+.askgrid{display:grid;gap:14px;max-width:980px;margin:clamp(30px,4.4vw,50px) auto 0;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
+.ask{display:flex;align-items:center;gap:14px;padding:18px 20px;border-radius:18px;text-align:right;
+  background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(var(--ivory-rgb),.09)}
+.ask svg{flex:none;width:34px;height:34px;fill:none;stroke:var(--a1);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ask p{font-weight:500;font-size:clamp(17px,1.9vw,19px);line-height:1.4;color:var(--t-hi);text-wrap:balance}
+.asks__end{margin-top:clamp(30px,4vw,44px);font-weight:900;font-size:clamp(21px,2.8vw,28px);line-height:1.4;text-wrap:balance}
+.asks .flow p{margin-top:14px}
+
+/* the six questions: tap what sounds like you, the bar fills, the answer appears at four */
+.quizsec{text-align:center}
+.quiz__k{display:inline-block;font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--a2-soft);padding:7px 16px;border-radius:999px;border:1px solid var(--a2-line)}
+.quizsec h2{margin-top:16px}
+.quizsec .sub{max-width:700px;margin:14px auto 0}
+.quiz{list-style:none;display:grid;gap:12px;max-width:760px;margin:clamp(26px,4vw,40px) auto 0;padding:0;text-align:right}
+.qitem{display:flex;width:100%;align-items:center;gap:16px;padding:16px 18px;border-radius:16px;cursor:pointer;font:inherit;color:inherit;text-align:right;
+  background:linear-gradient(165deg,rgba(255,255,255,.045),rgba(255,255,255,.012));border:1px solid rgba(var(--ivory-rgb),.09);transition:border-color .3s,background .3s,transform .3s}
+.qitem:hover{border-color:var(--a2-line)}
+.qitem:focus-visible{outline:2px solid var(--a1);outline-offset:3px}
+.qitem__box{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;border:1.5px solid rgba(var(--ivory-rgb),.35);transition:background .3s,border-color .3s}
+.qitem__box svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s var(--ease-out)}
+.qitem__t{font-weight:400;font-size:clamp(16px,1.9vw,18px);line-height:1.5;color:var(--t-hi)}
+.qitem[aria-pressed="true"]{border-color:rgba(var(--a1-rgb),.6);background:linear-gradient(165deg,rgba(var(--a1-rgb),.13),rgba(var(--a1-rgb),.03))}
+.qitem[aria-pressed="true"] .qitem__box{background:var(--a1);border-color:var(--a1)}
+.qitem[aria-pressed="true"] .qitem__box svg{stroke-dashoffset:0}
+.qbar{display:flex;gap:6px;max-width:420px;margin:clamp(24px,3.6vw,34px) auto 0;direction:rtl}
+.qbar i{flex:1;height:8px;border-radius:99px;background:rgba(var(--ivory-rgb),.1);transition:background .4s,box-shadow .4s}
+.qbar i.on{background:var(--a1);box-shadow:0 0 14px rgba(var(--a1-rgb),.7)}
+.qcount{margin-top:12px;font-weight:700;font-size:16px;color:var(--t-mid)}
+.qcount b{font-weight:900;color:var(--t-hi);font-size:20px}
+.qres{max-width:600px;margin:18px auto 0;padding:18px 20px;border-radius:18px;font-weight:500;font-size:clamp(17px,2vw,19px);line-height:1.6;color:var(--t-hi);
+  background:rgba(var(--ivory-rgb),.04);border:1px solid rgba(var(--ivory-rgb),.1)}
+.qres--hi{background:rgba(var(--a1-rgb),.1);border-color:rgba(var(--a1-rgb),.55)}
+.qres b{font-weight:900}
+.qres .btn{margin-top:16px}
+.qnote{margin-top:14px;font-weight:300;font-size:14.5px;line-height:1.6;color:var(--t-low)}
+
+/* one in twenty: twenty small people, one lit */
+.stats--20 .people{flex-wrap:wrap;max-width:470px;margin-inline:auto;gap:clamp(6px,1.4vw,12px)}
+.stats--20 .people svg{width:clamp(22px,6.4vw,35px)}
+.stats .mega__src{margin-top:10px;font-weight:300;font-size:14.5px;color:var(--t-low)}
+.stats .flow{margin-top:clamp(26px,3.6vw,38px)}
+
+/* the umbrella disorder: eight areas of life, each with its own icon */
+.umbrella{text-align:center}
+.umbrella .lead{max-width:760px;margin:16px auto 0}
+.dgrid{display:grid;gap:14px;max-width:1100px;margin:clamp(30px,4.4vw,50px) auto 0;text-align:right;grid-template-columns:1fr}
+@media (min-width:600px){.dgrid{grid-template-columns:1fr 1fr}}
+@media (min-width:1000px){.dgrid{grid-template-columns:repeat(4,1fr)}}
+.dgrid .mcard{padding:22px 20px}
+.dgrid .mcard .mi{width:48px;height:48px;margin-bottom:14px}
+.dgrid .mcard h4{font-size:clamp(19px,2vw,21px)}
+.dgrid .mcard p{font-size:clamp(15.5px,1.5vw,16.5px)}
+.umbrella .statrail{margin-top:clamp(30px,4.4vw,50px)}
+/* on a phone the cards lie down: the icon beside the words, so eight of them don't become a long tower */
+@media (max-width:599px){
+  .dgrid .mcard,.rgrid .mcard{display:grid;grid-template-columns:48px 1fr;column-gap:14px;align-items:start;padding:18px 18px}
+  .dgrid .mcard .mi,.rgrid .mcard .mi{grid-row:span 2;width:48px;height:48px;margin-bottom:0}
+  .dgrid .mcard p,.rgrid .mcard p{margin-top:6px}
+  .rgrid .mcard{flex-basis:100%;max-width:none}
+}
+.statrail p{font-size:clamp(19px,2.6vw,26px);text-wrap:balance}
+
+/* the transparent disorder: the labels women stick on themselves, crossed out one after another */
+.women{text-align:center}
+.women .flow p{margin-top:14px;text-wrap:balance}
+.lbls{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(12px,2vw,20px);max-width:760px;margin:clamp(26px,4vw,40px) auto 0}
+.lbl{position:relative;padding:14px 22px;border-radius:6px;font-weight:900;font-size:clamp(20px,2.8vw,26px);color:#1a1414;background:#f3ead8;
+  box-shadow:0 18px 30px -16px rgba(0,0,0,.9);transform:rotate(var(--r,0deg))}
+.lbl::after{content:"";position:absolute;left:8%;right:8%;top:52%;height:4px;border-radius:4px;background:var(--a1);transform:scaleX(0);transform-origin:right;
+  transition:transform .6s var(--ease-out) var(--dl,.4s)}
+.lbls.in .lbl::after,.no-js .lbl::after{transform:scaleX(1)}
+.press7{display:grid;gap:clamp(18px,3vw,30px);align-items:center;max-width:980px;margin:clamp(36px,5vw,60px) auto 0;text-align:right}
+.press7__cover{width:min(300px,72vw);margin-inline:auto;transform:rotate(-2.4deg);border-radius:6px;overflow:hidden;border:1px solid var(--a2-line);
+  box-shadow:0 40px 80px -34px rgba(0,0,0,.95),0 0 60px -30px rgba(var(--a1-rgb),.5)}
+.press7__cover img{display:block;width:100%;height:auto}
+.press7 .pf{margin:0}
+.press7 .pf__by a{color:var(--a2-soft);text-decoration:underline;text-underline-offset:3px}
+@media (min-width:860px){.press7{grid-template-columns:.8fr 1.2fr}}
+.tvclip{display:block;position:relative;max-width:640px;margin:clamp(34px,5vw,56px) auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--a2-line);background:var(--sf-7);
+  box-shadow:0 50px 110px -44px rgba(0,0,0,.95),0 0 80px -36px rgba(var(--a2-rgb),.4);color:inherit;text-decoration:none}
+.tvclip img{display:block;width:100%;height:auto}
+.tvclip__play{position:absolute;left:50%;top:42%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(var(--a1-rgb),.9);box-shadow:0 0 0 0 rgba(var(--a1-rgb),.5);animation:ringPulse 2.4s var(--ease) infinite}
+.tvclip__play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.tvclip__cap{display:block;padding:14px 18px 16px;font-weight:500;font-size:15.5px;line-height:1.5;color:var(--t-hi);text-align:center;border-top:1px solid rgba(var(--a2-rgb),.14)}
+.tvclip__cap u{color:var(--a2-soft);text-underline-offset:3px}
+.women .statrail{margin-top:clamp(30px,4.4vw,50px)}
+
+/* the good news: "yes, yes, yes", and five reasons */
+.news .news__ask{text-wrap:balance}
+.rgrid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;max-width:1120px;margin:clamp(30px,4.4vw,50px) auto 0;text-align:right}
+.rgrid .mcard{flex:1 1 300px;max-width:360px}
+.news .close{margin-top:clamp(26px,3.6vw,38px);font-weight:900;font-size:clamp(22px,3.2vw,32px);line-height:1.3;text-wrap:balance}
+
+/* "למה עד היום זה לא נפתר?": cards with a red X */
+.nopes{text-align:center}
+.xgrid{display:grid;gap:16px;max-width:980px;margin:clamp(30px,4.4vw,50px) auto 0;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));text-align:right}
+@media (min-width:700px){.xgrid{grid-template-columns:repeat(2,1fr);max-width:820px}}
+.xcard{position:relative;padding:22px;border-radius:20px;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(var(--ivory-rgb),.09)}
+.xcard__x{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(var(--a1-rgb),.14);border:1px solid rgba(var(--a1-rgb),.5)}
+.xcard__x svg{width:16px;height:16px;fill:none;stroke:var(--a1);stroke-width:3;stroke-linecap:round}
+.xcard h4{margin-top:12px;font-size:clamp(19px,2.1vw,22px);line-height:1.25}
+.xcard p{margin-top:8px;font-weight:300;font-size:clamp(16px,1.7vw,17.5px);line-height:1.6;color:var(--t-mid)}
+
+/* the product: two experts, side by side */
+html body .product__name{font-style:normal;font-size:clamp(34px,9.4vw,96px);line-height:1.08}
+.duo{display:grid;gap:16px;max-width:780px;margin:clamp(30px,4.4vw,48px) auto 0;text-align:right}
+@media (min-width:700px){.duo{grid-template-columns:1fr 1fr}}
+.duo__c{display:flex;align-items:center;gap:16px;padding:18px 20px;border-radius:20px;background:linear-gradient(165deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(var(--ivory-rgb),.09)}
+.duo__c img,.duo__ico{flex:none;width:68px;height:68px;border-radius:50%;object-fit:cover;border:2px solid var(--a1);box-shadow:0 0 24px -6px rgba(var(--a1-rgb),.7)}
+.duo__ico{display:grid;place-items:center;background:rgba(var(--a1-rgb),.1)}
+.duo__ico svg{width:34px;height:34px;fill:none;stroke:var(--ivory);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.duo__c b{display:block;font-weight:900;font-size:clamp(18px,2vw,20px);color:var(--t-hi)}
+.duo__c span{display:block;margin-top:4px;font-weight:300;font-size:clamp(15px,1.6vw,16px);line-height:1.5;color:var(--t-mid)}
+
+/* road map: four stops; the first one shows the Zoom meeting */
+.stop__thumb{display:block;width:min(240px,74%);margin:16px auto 0;border-radius:14px;border:1px solid var(--a2-line);box-shadow:0 20px 40px -20px rgba(0,0,0,.9)}
+.vidline{max-width:520px;margin:clamp(34px,5vw,56px) auto 0;font-weight:700;font-size:clamp(18px,2.2vw,21px);text-align:center;color:var(--t-hi);text-wrap:balance}
+.talkvid--tall{max-width:380px;margin-top:16px}
+.talkvid--tall .talkvid__frame{aspect-ratio:9/16}
+
+/* what you get, and the form right under it */
+.offer .vstack .row > span:last-child{color:var(--a1)}
+.offer .ctanote{margin-top:22px}
+.offer .seat{margin-top:clamp(24px,3.4vw,36px)}
+.seat__thanks{margin-top:18px;padding:16px 18px;border-radius:16px;font-weight:500;font-size:clamp(16px,1.9vw,18px);line-height:1.6;color:var(--t-hi);background:rgba(var(--ok-rgb),.12);border:1px solid rgba(var(--ok-rgb),.45)}
+.seat__privacy{margin-top:12px;font-size:14px;line-height:1.5;color:var(--t-mid);text-align:center}
+.seat__note{margin:0 0 16px;font-weight:700;font-size:clamp(17px,2vw,19px);text-align:center;color:var(--t-hi);text-wrap:balance}
+
+/* the messages people sent, shown the way they arrived: a WhatsApp chat with "אנשי הקשב" */
+.wa-sec{padding-block:clamp(64px,8vw,110px)}
+.wawall{display:grid;gap:18px;max-width:860px;margin:0 auto;align-items:start}
+@media (min-width:760px){.wawall{grid-template-columns:1fr 1fr}}
+.wa{border-radius:22px;overflow:hidden;background:#0b141a;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px -40px rgba(0,0,0,.95);
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;text-align:right}
+.wa__top{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1f2c34;color:#e9edef}
+.wa__back{flex:none;width:20px;height:20px;fill:none;stroke:#aebac1;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.wa__ava{flex:none;width:38px;height:38px;border-radius:50%;background:#000 url(assets/logo-brain.webp) center/88% no-repeat;border:1px solid rgba(255,255,255,.12)}
+.wa__name{flex:1;font-weight:600;font-size:16.5px;line-height:1.2}
+.wa__ic{flex:none;width:21px;height:21px;fill:none;stroke:#aebac1;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.wa__body{display:grid;gap:6px;padding:16px 12px 12px;min-height:120px;
+  background:#0b141a radial-gradient(rgba(255,255,255,.035) 1px,transparent 1.4px) 0 0/18px 18px}
+.wa__msg{justify-self:end;position:relative;max-width:88%;padding:8px 10px 6px;border-radius:9px;border-start-end-radius:0;background:#005c4b;color:#e9edef;
+  font-size:clamp(15px,1.6vw,15.5px);line-height:1.55;box-shadow:0 1px .5px rgba(0,0,0,.25)}
+.wa__msg::before{content:"";position:absolute;top:0;inset-inline-end:-7px;width:8px;height:12px;background:#005c4b;clip-path:polygon(0 0,100% 0,100% 100%)}
+.wa__msg p{margin:0}
+.wa__tick{display:block;width:17px;height:11px;margin:2px 0 0 auto;margin-inline-start:auto;margin-inline-end:0}
+.wa__tick path{fill:none;stroke:#53bdeb;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.wa__bar{display:flex;align-items:center;gap:8px;padding:8px 10px 10px;background:#0b141a}
+.wa__in{flex:1;height:38px;border-radius:20px;background:#1f2c34;color:#8696a0;font-size:15px;line-height:38px;padding:0 14px}
+.wa__mic{flex:none;width:38px;height:38px;border-radius:50%;background:#00a884;display:grid;place-items:center}
+.wa__mic svg{width:18px;height:18px;fill:none;stroke:#0b141a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:759px){
+  .wawall{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;
+    margin-inline:calc(-1*clamp(20px,5vw,52px));padding:6px clamp(20px,5vw,52px) 18px}
+  .wawall::-webkit-scrollbar{display:none}
+  .wawall .wa{flex:0 0 86%;scroll-snap-align:center}
+  .wa-sec .pf-dots{display:flex;justify-content:center;gap:8px;margin-top:4px}
+}
+
+/* not only medication: six ways, and the line that ties them */
+.treat{text-align:center}
+.treat .lead{max-width:760px;margin:16px auto 0}
+.treat .statrail{margin-top:clamp(30px,4.4vw,50px)}
+
+/* insurance */
+.insure{text-align:center}
+.lockbadge svg{width:38px;height:38px;fill:none;stroke:var(--ivory);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.safecard h3{margin-top:18px;font-size:clamp(24px,3vw,32px)}
+.safecard .sub{margin-top:12px;text-wrap:balance}
+.safecard .lead{text-wrap:balance}
+
+/* who it is for */
+.notfor a{color:var(--a2-soft);text-decoration:underline;text-underline-offset:3px}
+
+/* first names and sources under quotes */
+.pf__by{margin-top:14px;font-weight:700;font-size:15px;color:var(--a2-soft)}
+.final .sub{text-align:center;margin-top:12px}
+.final .ps b{font-weight:900;color:var(--t-hi)}
+.logo-white{filter:brightness(0) invert(1)}
+.plate img.logo-white{height:clamp(40px,4.4vw,54px);max-width:100%}
+.said,.news h2,.asks__end,.close{text-wrap:balance}
+
+@media (prefers-reduced-motion:reduce){
+  .lbl::after{transition:none}
+  .tvclip__play{animation:none}
+}
