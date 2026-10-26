@@ -149,6 +149,8 @@ html body .product__name{font-style:normal;font-size:clamp(34px,9.4vw,96px);line
 .wa-sec{padding-block:clamp(64px,8vw,110px)}
 .wawall{display:grid;gap:18px;max-width:860px;margin:0 auto;align-items:start}
 @media (min-width:760px){.wawall{grid-template-columns:1fr 1fr}}
+/* one message on its own, beside the sentence it proves */
+.wa--solo{max-width:430px;margin:clamp(30px,4.4vw,50px) auto 0}
 .wa{border-radius:22px;overflow:hidden;background:#0b141a;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px -40px rgba(0,0,0,.95);
   font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;text-align:right}
 .wa__top{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1f2c34;color:#e9edef}
