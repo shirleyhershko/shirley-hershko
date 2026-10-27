@@ -356,6 +356,7 @@
 }
 </style>
 <link rel="stylesheet" href="avchun.css">
+<script src="lead-form.js" defer></script>
 </head>
 <body class="no-js">
 <div id="spot"></div>
@@ -671,13 +672,12 @@
         <input id="p1" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="050-1234567" required>
         <label for="m1">אימייל <span class="req" aria-hidden="true">*</span></label>
         <input id="m1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-        <label class="seat__ok"><input type="checkbox" name="consent" required><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
+        <label class="seat__ok"><input type="checkbox" name="consent" required checked><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
       </div>
       <p class="seat__err" role="alert" hidden>כדי להשאיר פרטים צריך למלא שם, טלפון ואימייל ולסמן את התיבה</p>
       <button class="btn btn--pulse" type="submit">אני רוצה פרטים על האבחון</button>
       <p class="seat__thanks" role="status" hidden></p>
       <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p>
-      <p class="seat__demo">דמו: הטופס עוד לא מחובר</p>
     </form>
   </div>
 </section>
@@ -826,13 +826,12 @@
         <input id="p2" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="050-1234567" required>
         <label for="m2">אימייל <span class="req" aria-hidden="true">*</span></label>
         <input id="m2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-        <label class="seat__ok"><input type="checkbox" name="consent" required><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
+        <label class="seat__ok"><input type="checkbox" name="consent" required checked><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
       </div>
       <p class="seat__err" role="alert" hidden>כדי להשאיר פרטים צריך למלא שם, טלפון ואימייל ולסמן את התיבה</p>
       <button class="btn btn--pulse" type="submit">אני רוצה פרטים על האבחון</button>
       <p class="seat__thanks" role="status" hidden></p>
       <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p>
-      <p class="seat__demo">דמו: הטופס עוד לא מחובר</p>
     </form>
     <p class="ps reveal">נ.ב. מאובחנים רבים מספרים לי שאחרי האבחון הכל מתחבר כמו פאזל. ושבפעם הראשונה, הם מצליחים להרגיש חמלה כלפי הילד שהיו, במקום לכעוס עליו.</p>
   </div>
@@ -888,7 +887,7 @@
   var go=d.querySelector("[data-go]");
   if(go) go.addEventListener("click",function(){ setTimeout(function(){ try{ d.getElementById("n1").focus({preventScroll:true}); }catch(e){} },700); });
 
-  /* both forms. DEMO ONLY: the real version sends the lead to Shirley (Mor connects it), and she calls back */
+  /* both forms: the registration goes to Wix (lead-form.js), the thank you line shows, and Shirley calls back */
   [].forEach.call(d.querySelectorAll("[data-seat]"),function(form){
     form.addEventListener("submit",function(e){
       e.preventDefault();
@@ -898,9 +897,12 @@
       [].forEach.call(req,function(i){ var no=bad.indexOf(i)>-1; if(i.type==="checkbox") i.parentNode.classList.toggle("is-bad",no); else i.style.borderColor=no?"var(--a1)":""; });
       var err=form.querySelector(".seat__err"); if(err) err.hidden=!bad.length;
       if(bad.length){ bad[0].focus(); return; }
-      var ok=form.querySelector(".seat__thanks"), nm=form.querySelector('input[name="name"]').value.trim();
-      ok.textContent="תודה "+nm+"! קיבלתי את הפרטים, ואחזור אליך עם הסבר על האבחון.";
-      ok.hidden=false; form.querySelector("button[type=submit]").hidden=true;
+      var ok=form.querySelector(".seat__thanks"), nm=form.querySelector('input[name="name"]').value.trim(), btn=form.querySelector("button[type=submit]");
+      btn.disabled=true;
+      (window.sendLead?window.sendLead(form,"avchun",true):Promise.resolve(false)).then(function(){
+        ok.textContent="תודה "+nm+"! קיבלתי את הפרטים, ואחזור אליך עם הסבר על האבחון.";
+        ok.hidden=false; btn.hidden=true;
+      });
     });
   });
 })();

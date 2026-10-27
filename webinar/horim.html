@@ -358,6 +358,7 @@
 }
 </style>
 <link rel="stylesheet" href="horim.css">
+<script src="lead-form.js" defer></script>
 </head>
 <body class="no-js theme-horim">
 <div id="spot"></div>
@@ -693,12 +694,12 @@
         <input id="p1" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="050-1234567" required>
         <label for="m1">אימייל <span class="req" aria-hidden="true">*</span></label>
         <input id="m1" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-        <label class="seat__ok"><input type="checkbox" name="consent" required><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
+        <label class="seat__ok"><input type="checkbox" name="consent" required checked><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
       </div>
       <p class="seat__note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7v6M12 16.5v.5"/></svg><span>חשוב לדעת: המקומות בזום מוגבלים. ההדרכות שלי מתמלאות בדרך כלל עד אפס מקום, ולכן כדאי לשריין את המקום שלכם עכשיו. ההדרכה בזום, באורך שעה, ובחינם לגמרי. היא מתאימה גם להורים שהילדים שלהם עוד לא אובחנו. אחרי ההרשמה מצטרפים לקבוצת הוואטסאפ של השידור, ושם אשלח את הקישור לזום.</span></p>
       <p class="seat__err" role="alert" hidden>כדי לשריין מקום צריך למלא שם, טלפון ואימייל ולסמן את התיבה</p>
       <button class="btn btn--pulse" type="submit">אני רוצה לשריין מקום בחינם</button>
-      <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p><p class="seat__demo">דמו: הטופס עוד לא מחובר</p>
+      <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p>
     </form>
   </div>
 </section>
@@ -816,11 +817,11 @@
         <input id="p2" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="050-1234567" required>
         <label for="m2">אימייל <span class="req" aria-hidden="true">*</span></label>
         <input id="m2" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@example.com" required>
-        <label class="seat__ok"><input type="checkbox" name="consent" required><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
+        <label class="seat__ok"><input type="checkbox" name="consent" required checked><span>אפשר לשלוח לי מידע מעניין ותורם במייל <span class="req" aria-hidden="true">*</span></span></label>
       </div>
       <p class="seat__err" role="alert" hidden>כדי לשריין מקום צריך למלא שם, טלפון ואימייל ולסמן את התיבה</p>
       <button class="btn" type="submit">אני רוצה לשריין מקום בחינם</button>
-      <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p><p class="seat__demo">דמו: הטופס עוד לא מחובר</p>
+      <p class="seat__privacy">הפרטים נשארים אצלי, ולא מועברים לאף אחד.</p>
     </form>
     <p class="ps reveal">נ.ב. אם רק אחד מכם יכול להגיע, זה בסדר גמור. אבל אם יש בבית עוד מבוגר שמגדל איתכם את הילדים, כדאי להגיע יחד. הבנה משותפת היא לפעמים הצעד הראשון של כל השינוי.</p>
   </div>
@@ -862,7 +863,7 @@
   var go=d.querySelector("[data-go]");
   if(go) go.addEventListener("click",function(){ setTimeout(function(){ try{ d.getElementById("n1").focus({preventScroll:true}); }catch(e){} },700); });
 
-  /* both forms. DEMO ONLY: the real version sends the lead to the mailing list, then goes to the thank you page */
+  /* both forms: the registration goes to Wix (lead-form.js), then on to the thank you page */
   [].forEach.call(d.querySelectorAll("[data-seat]"),function(form){
     form.addEventListener("submit",function(e){
       e.preventDefault();
@@ -872,7 +873,9 @@
       [].forEach.call(req,function(i){ var no=bad.indexOf(i)>-1; if(i.type==="checkbox") i.parentNode.classList.toggle("is-bad",no); else i.style.borderColor=no?"var(--a1)":""; });
       var err=form.querySelector(".seat__err"); if(err) err.hidden=!bad.length;
       if(bad.length){ bad[0].focus(); return; }
-      location.href="todah.html?n="+encodeURIComponent(form.querySelector('input[name="name"]').value.trim());
+      var nm=form.querySelector('input[name="name"]').value.trim(), btn=form.querySelector("button[type=submit]");
+      btn.disabled=true;
+      (window.sendLead?window.sendLead(form,"webinar-parents"):Promise.resolve(false)).then(function(){ location.href="todah.html?n="+encodeURIComponent(nm); });
     });
   });
 })();

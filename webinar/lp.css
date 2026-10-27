@@ -1073,3 +1073,6 @@ html body .power .gk{position:absolute;left:50%;top:50%;width:44%;transform:tran
 .dawn.in .dawn__sun,.no-js .dawn__sun{transform:none}
 .dawn.in .dawn__rays path,.no-js .dawn__rays path{opacity:1}
 @media (prefers-reduced-motion:reduce){.dawn__sun{transform:none;transition:none}.dawn__rays path{opacity:1;transition:none}}
+
+/* a form button while the registration is on its way */
+.btn:disabled{opacity:.7;cursor:progress;animation:none}
