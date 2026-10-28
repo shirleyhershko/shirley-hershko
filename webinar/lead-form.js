@@ -38,8 +38,9 @@
     var sent=fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body),keepalive:true})
       .then(function(r){ return r.ok; },function(){ return false; });
     var late=new Promise(function(r){ setTimeout(function(){ r(false); },4000); });
+    /* a person who filled the form counts as a Lead for the ads, even when Wix is slow or not connected */
     return Promise.race([sent,late]).then(function(ok){
-      if(ok){
+      if(!body.website){
         if(stay) fbq("track","Lead",{content_name:page});
         else try{ sessionStorage.setItem("lp_lead",page); }catch(e){}
       }
