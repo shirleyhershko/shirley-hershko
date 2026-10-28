@@ -114,8 +114,11 @@
 <script>
 (function(){
   /* her first name from the form (?n=), only as text. Without it the kicker stays as is */
-  var n=(new URLSearchParams(location.search).get("n")||"").trim().slice(0,30);
+  var q=new URLSearchParams(location.search);
+  var n=(q.get("n")||"").trim().slice(0,30);
   if(n) document.getElementById("kicker").textContent=n+", המקום שלך שמור";
+  /* the name leaves the address before the pixel (lead-form.js, deferred) loads, so it never reaches Meta */
+  if(q.has("n")){ q.delete("n"); try{ history.replaceState(null,"",location.pathname+(q.toString()?"?"+q:"")+location.hash); }catch(e){} }
 })();
 </script>
 <script src="lp.js"></script>
