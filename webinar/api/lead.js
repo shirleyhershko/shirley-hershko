@@ -43,8 +43,9 @@ function toSheet(lead) {
     .catch((e) => console.error("crm sheet failed", e && e.message, lead.page));
 }
 
-/* wait for a side step, but never more than 2.5 seconds (the request itself has already left) */
-const settle = (p) => Promise.race([p, new Promise((done) => setTimeout(done, 2500))]);
+/* wait for a side step, but only until the deadline: the form counts a Lead only if we answer within 4 seconds.
+   The request itself has already left, so the sheet and the newsletter still get it. */
+const settle = (p, until) => Promise.race([p, new Promise((done) => setTimeout(done, Math.max(0, until - Date.now())))]);
 
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
@@ -84,10 +85,11 @@ module.exports = async function handler(req, res) {
   };
 
   /* the sheet copy leaves first, so it is kept even when Wix doesn't answer */
+  const until = Date.now() + 2800;
   const sheet = toSheet(lead);
   const hook = process.env.WIX_LEAD_WEBHOOK;
   if (!hook) {
-    await settle(sheet);
+    await settle(sheet, until);
     return res.status(503).json({ ok: false });
   }
 
@@ -99,16 +101,16 @@ module.exports = async function handler(req, res) {
     });
     if (!r.ok) {
       console.error("wix webhook answered", r.status, page);
-      await settle(sheet);
+      await settle(sheet, until);
       return res.status(502).json({ ok: false });
     }
-    /* the registration is saved; the newsletter and the sheet never hold it up for more than 2.5 seconds or fail it */
+    /* the registration is saved; the newsletter and the sheet never hold it up past the deadline or fail it */
     const sub = lead.marketingConsent ? subscribe(email).catch((e) => console.error("newsletter failed", e && e.message, page)) : null;
-    await settle(Promise.all([sheet, sub]));
+    await settle(Promise.all([sheet, sub]), until);
     return res.status(200).json({ ok: true });
   } catch (e) {
     console.error("wix webhook failed", e && e.message, page);
-    await settle(sheet);
+    await settle(sheet, until);
     return res.status(502).json({ ok: false });
   }
 };
