@@ -55,6 +55,25 @@
 .cal:hover{border-color:rgba(var(--ivory-rgb),.6);background:rgba(var(--ivory-rgb),.07);transform:translateY(-2px)}
 .cal:focus-visible{outline:2px solid var(--a1);outline-offset:3px}
 
+/* two numbered steps, so on a phone the calendar shows right under the WhatsApp button and isn't missed */
+.step{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;font-weight:900;font-size:18px;line-height:1;color:#fff;background:var(--a1-grad);
+  box-shadow:0 0 0 6px rgba(var(--a1-rgb),.14),0 10px 24px -10px rgba(var(--a1-rgb),.9)}
+.todah__go .step{margin-bottom:14px}
+.todah__cal .step{position:absolute;top:-18px;left:calc(50% - 18px)}
+.todah__cal .todah__links{margin-top:18px}
+.todah__cal .todah__when{margin-top:26px}
+@media (max-width:560px){
+  .todah{padding-top:12px}
+  .todah .portrait{width:min(44vw,170px)}
+  .todah__ok{width:50px;height:50px;left:calc(50% - 25px);bottom:-8px}
+  .todah__ok svg{width:26px;height:26px}
+  .todah__kicker{margin-top:20px}
+  .todah__lead{margin-top:12px}
+  .todah__go{margin-top:20px}
+  .todah__go .step{margin-bottom:12px}
+  .todah__cal{margin-top:36px;padding-top:30px}
+}
+
 /* sign off */
 .todah__sign{margin-top:clamp(40px,6vw,56px);font-size:clamp(17px,1.9vw,19px);line-height:1.5;color:var(--t-mid)}
 .todah__sign b{display:block;font-weight:900;font-size:clamp(20px,2.4vw,24px);color:var(--t-hi)}
@@ -88,17 +107,19 @@
       <h1 class="rise">רגע, לפני שסוגרים את הדף</h1>
       <p class="todah__lead reveal">את הקישור לזום ואת התזכורות לפני ההדרכה אשלח בקבוצת הוואטסאפ של השידור המיוחד. ככה הם לא ילכו לאיבוד בין המיילים.</p>
       <div class="todah__go reveal">
+        <span class="step" aria-hidden="true">1</span>
         <a class="btn btn--wa btn--pulse btn--xl" href="https://chat.whatsapp.com/BnCYfTLVxjcApkGMUVOayQ" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.87 9.87 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.9 9.9 0 0012.04 2zm5.8 14.02c-.25.69-1.44 1.32-2 1.4-.51.08-1.16.11-1.87-.12-.43-.14-.98-.32-1.69-.62-2.98-1.29-4.92-4.28-5.07-4.48-.15-.2-1.21-1.61-1.21-3.07 0-1.46.77-2.18 1.04-2.48.27-.3.6-.37.79-.37h.57c.18 0 .43-.07.67.51.25.6.84 2.06.92 2.21.07.15.12.32.02.52-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.61.17.3.77 1.27 1.65 2.06 1.14 1.01 2.1 1.33 2.4 1.48.3.15.47.12.65-.07.17-.2.74-.87.94-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.03.97.3.15.5.22.57.35.08.12.08.72-.17 1.4z"/></svg>אני רוצה להצטרף לקבוצת&nbsp;הוואטסאפ</a>
       </div>
 
       <div class="todah__cal reveal">
+        <span class="step" aria-hidden="true">2</span>
         <p class="todah__line">ועוד דבר קטן: כדאי להכניס את ההדרכה ליומן, כדי ששום דבר אחר לא יתפוס לך את הבוקר הזה.</p>
-        <p class="todah__when"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="nw">11.11 בשעה 11</span></p>
-        <div class="cd" data-cd><div><b data-u="d">00</b><span>ימים</span></div><div><b data-u="h">00</b><span>שעות</span></div><div><b data-u="m">00</b><span>דקות</span></div><div><b data-u="s">00</b><span>שניות</span></div></div>
         <div class="todah__links">
           <a class="cal" id="calG" href="#" target="_blank" rel="noopener"><span class="cal__logo" aria-hidden="true"><svg viewBox="0 0 200 200"><g transform="translate(3.75 3.75)"><path fill="#fff" d="M148.882 43.618l-47.368-5.263-57.895 5.263-5.264 52.632 5.263 52.632 52.632 6.579 52.632-6.579 5.263-53.947z"/><path fill="#1A73E8" d="M65.211 125.276c-3.934-2.658-6.658-6.539-8.145-11.671l9.132-3.763c.829 3.158 2.276 5.605 4.342 7.342 2.053 1.737 4.553 2.592 7.474 2.592 2.987 0 5.553-.908 7.697-2.724s3.224-4.132 3.224-6.934c0-2.868-1.132-5.211-3.395-7.026s-5.105-2.724-8.5-2.724h-5.276v-9.039H76.5c2.921 0 5.382-.789 7.382-2.368 2-1.579 3-3.737 3-6.487 0-2.447-.895-4.395-2.684-5.855s-4.053-2.197-6.803-2.197c-2.684 0-4.816.711-6.395 2.145s-2.724 3.197-3.447 5.276l-9.039-3.763c1.197-3.395 3.395-6.395 6.618-8.987 3.224-2.592 7.342-3.895 12.342-3.895 3.697 0 7.026.711 9.974 2.145 2.947 1.434 5.263 3.421 6.934 5.947 1.671 2.539 2.5 5.382 2.5 8.539 0 3.224-.776 5.947-2.329 8.184-1.553 2.237-3.461 3.947-5.724 5.145v.539c2.987 1.25 5.421 3.158 7.342 5.724 1.908 2.566 2.868 5.632 2.868 9.211s-.908 6.776-2.724 9.579c-1.816 2.803-4.329 5.013-7.513 6.618-3.197 1.605-6.789 2.421-10.776 2.421-4.618.013-8.881-1.316-12.815-3.974z"/><path fill="#1A73E8" d="M121.25 79.961l-9.974 7.25-5.013-7.605 17.987-12.974h6.895v61.197h-9.895z"/><path fill="#EA4335" d="M148.882 196.25l47.368-47.368-23.684-10.526-23.684 10.526-10.526 23.684z"/><path fill="#34A853" d="M33.092 172.566l10.526 23.684h105.263v-47.368H43.618z"/><path fill="#4285F4" d="M12.039-3.75C3.316-3.75-3.75 3.316-3.75 12.039v136.842l23.684 10.526 23.684-10.526V43.618h105.263l10.526-23.684L148.882-3.75z"/><path fill="#188038" d="M-3.75 148.882v31.579c0 8.724 7.066 15.789 15.789 15.789h31.579v-47.368z"/><path fill="#FBBC04" d="M148.882 43.618v105.263h47.368V43.618l-23.684-10.526z"/><path fill="#1967D2" d="M196.25 43.618V12.039c0-8.724-7.066-15.789-15.789-15.789h-31.579v47.368z"/></g></svg></span>הוספה ליומן גוגל</a>
           <a class="cal" id="calI" href="shirley-11-11.ics"><span class="cal__logo cal__logo--apple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg></span>הוספה ליומן באייפון</a>
         </div>
+        <p class="todah__when"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="nw">11.11 בשעה 11</span></p>
+        <div class="cd" data-cd><div><b data-u="d">00</b><span>ימים</span></div><div><b data-u="h">00</b><span>שעות</span></div><div><b data-u="m">00</b><span>דקות</span></div><div><b data-u="s">00</b><span>שניות</span></div></div>
       </div>
 
       <p class="todah__sign reveal">נתראה בזום,<b>ד״ר שירלי הרשקו</b></p>
@@ -126,6 +147,9 @@
 (function(){
   var d=document;
   /* Google Calendar: 11.11.2026 11:00 to 12:00 Israel time, the WhatsApp group inside the event */
+  /* on an iPhone or iPad the Apple calendar link comes first */
+  var ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  if(ios) d.getElementById("calG").before(d.getElementById("calI"));
   d.getElementById("calG").href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D7%94%D7%93%D7%A8%D7%9B%D7%AA%20%D7%96%D7%95%D7%9D%20%D7%9E%D7%99%D7%95%D7%97%D7%93%D7%AA%20%7C%20%D7%93%D7%B4%D7%A8%20%D7%A9%D7%99%D7%A8%D7%9C%D7%99%20%D7%94%D7%A8%D7%A9%D7%A7%D7%95&dates=20261111T110000%2F20261111T120000&ctz=Asia%2FJerusalem&location=Zoom&details=%D7%94%D7%A7%D7%99%D7%A9%D7%95%D7%A8%20%D7%9C%D7%96%D7%95%D7%9D%20%D7%99%D7%99%D7%A9%D7%9C%D7%97%20%D7%91%D7%A7%D7%91%D7%95%D7%A6%D7%AA%20%D7%94%D7%95%D7%95%D7%A6%D7%90%D7%A4%20%D7%A9%D7%9C%20%D7%94%D7%A9%D7%99%D7%93%D7%95%D7%A8%3A%20https%3A%2F%2Fchat.whatsapp.com%2FBnCYfTLVxjcApkGMUVOayQ";
   /* countdown, same as the landing page: 11.11.2026 11:00 Israel time (UTC+2 in November) */
   var T=Date.UTC(2026,10,11,9,0,0),boxes=[].slice.call(d.querySelectorAll("[data-cd]"));

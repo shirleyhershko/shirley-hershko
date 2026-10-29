@@ -2,8 +2,10 @@
    sendLead(form, page, stay) passes a registration to /api/lead, which hands it to Wix.
    It never blocks the visitor: after 4 seconds at most it answers, sent or not. */
 (function(w,d){
-  /* the Meta pixel, the same one that runs on drshirleyhershko.com */
+  /* the Meta pixels: Shirley's main pixel, which the webinar campaign counts on (as Mor asked),
+     and the agency's pixel (the one on drshirleyhershko.com), kept as it was until the agency says it no longer needs it */
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(w,d,"script","https://connect.facebook.net/en_US/fbevents.js");
+  fbq("init","2153966398696218");
   fbq("init","1874752147018374");
   fbq("track","PageView");
 
