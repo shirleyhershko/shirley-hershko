@@ -14,7 +14,7 @@ function phoneIL(raw) {
 }
 
 /* With consent, the email joins the newsletter in Wix: the automation has no step for that.
-   It needs the Vercel setting WIX_API_KEY, a Wix key with the "Manage Email Subscriptions" permission;
+   It needs the Vercel setting WIX_API_KEY (added 29.10.2026), a Wix key with an email permission;
    without it this step is skipped. Someone who once unsubscribed is left as they are. */
 const SITE_ID = "eff09e79-ab2e-4434-a626-9fcbb7e606f2";
 const SUBS = "https://www.wixapis.com/email-marketing/v1/email-subscriptions";
