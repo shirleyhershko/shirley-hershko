@@ -85,7 +85,7 @@ module.exports = async function handler(req, res) {
   };
 
   /* the sheet copy leaves first, so it is kept even when Wix doesn't answer */
-  const until = Date.now() + 2800;
+  const until = Date.now() + 2200;
   const sheet = toSheet(lead);
   const hook = process.env.WIX_LEAD_WEBHOOK;
   if (!hook) {
