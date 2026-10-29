@@ -38,7 +38,8 @@ function toSheet(lead) {
   const url = process.env.CRM_SHEET_WEBHOOK;
   if (!url) return Promise.resolve();
   return fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ receivedAt: new Date().toISOString(), ...lead }) })
-    .then((r) => { if (!r.ok) console.error("crm sheet answered", r.status, lead.page); })
+    .then((r) => r.json().catch(() => ({ status: r.status })))
+    .then((j) => { if (!j.ok) console.error("crm sheet answered", JSON.stringify(j).slice(0, 120), lead.page); })
     .catch((e) => console.error("crm sheet failed", e && e.message, lead.page));
 }
 
