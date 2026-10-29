@@ -13,6 +13,24 @@ function phoneIL(raw) {
   return raw.trim().startsWith("+") ? "+" + d : d;
 }
 
+/* With consent, the email joins the newsletter in Wix: the automation has no step for that.
+   It needs the Vercel setting WIX_API_KEY, a Wix key with the "Manage Email Subscriptions" permission;
+   without it this step is skipped. Someone who once unsubscribed is left as they are. */
+const SITE_ID = "eff09e79-ab2e-4434-a626-9fcbb7e606f2";
+const SUBS = "https://www.wixapis.com/email-marketing/v1/email-subscriptions";
+
+async function subscribe(email) {
+  const key = process.env.WIX_API_KEY;
+  if (!key) return;
+  const headers = { "Content-Type": "application/json", Authorization: key, "wix-site-id": SITE_ID };
+  const q = await fetch(SUBS + "/query", { method: "POST", headers, body: JSON.stringify({ filter: { email: { $in: [email] } } }) });
+  if (!q.ok) throw new Error("query answered " + q.status);
+  const now = ((await q.json()).subscriptions || [])[0];
+  if (now && (now.subscriptionStatus === "SUBSCRIBED" || now.subscriptionStatus === "UNSUBSCRIBED")) return;
+  const u = await fetch(SUBS, { method: "POST", headers, body: JSON.stringify({ subscription: { email, subscriptionStatus: "SUBSCRIBED" } }) });
+  if (!u.ok) throw new Error("upsert answered " + u.status);
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -62,6 +80,11 @@ module.exports = async function handler(req, res) {
     if (!r.ok) {
       console.error("wix webhook answered", r.status, page);
       return res.status(502).json({ ok: false });
+    }
+    /* the registration is saved; the newsletter never holds it up for more than 2.5 seconds or fails it */
+    if (lead.marketingConsent) {
+      const sub = subscribe(email).catch((e) => console.error("newsletter failed", e && e.message, page));
+      await Promise.race([sub, new Promise((done) => setTimeout(done, 2500))]);
     }
     return res.status(200).json({ ok: true });
   } catch (e) {
