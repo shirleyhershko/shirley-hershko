@@ -31,6 +31,20 @@ async function subscribe(email) {
   if (!u.ok) throw new Error("upsert answered " + u.status);
 }
 
+/* Every registration is also copied at once into the CRM sheet in Google (an Apps Script web app),
+   so the CRM stays current and nothing is lost when Wix doesn't answer.
+   Its address lives only in the Vercel setting CRM_SHEET_WEBHOOK; without it this step is skipped. */
+function toSheet(lead) {
+  const url = process.env.CRM_SHEET_WEBHOOK;
+  if (!url) return Promise.resolve();
+  return fetch(url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ receivedAt: new Date().toISOString(), ...lead }) })
+    .then((r) => { if (!r.ok) console.error("crm sheet answered", r.status, lead.page); })
+    .catch((e) => console.error("crm sheet failed", e && e.message, lead.page));
+}
+
+/* wait for a side step, but never more than 2.5 seconds (the request itself has already left) */
+const settle = (p) => Promise.race([p, new Promise((done) => setTimeout(done, 2500))]);
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -51,9 +65,6 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ ok: false });
   }
 
-  const hook = process.env.WIX_LEAD_WEBHOOK;
-  if (!hook) return res.status(503).json({ ok: false });
-
   const sp = name.indexOf(" ");
   const lead = {
     firstName: sp > 0 ? name.slice(0, sp) : name,
@@ -71,6 +82,14 @@ module.exports = async function handler(req, res) {
     pageUrl: clip(b.pageUrl, 300),
   };
 
+  /* the sheet copy leaves first, so it is kept even when Wix doesn't answer */
+  const sheet = toSheet(lead);
+  const hook = process.env.WIX_LEAD_WEBHOOK;
+  if (!hook) {
+    await settle(sheet);
+    return res.status(503).json({ ok: false });
+  }
+
   try {
     const r = await fetch(hook, {
       method: "POST",
@@ -79,16 +98,16 @@ module.exports = async function handler(req, res) {
     });
     if (!r.ok) {
       console.error("wix webhook answered", r.status, page);
+      await settle(sheet);
       return res.status(502).json({ ok: false });
     }
-    /* the registration is saved; the newsletter never holds it up for more than 2.5 seconds or fails it */
-    if (lead.marketingConsent) {
-      const sub = subscribe(email).catch((e) => console.error("newsletter failed", e && e.message, page));
-      await Promise.race([sub, new Promise((done) => setTimeout(done, 2500))]);
-    }
+    /* the registration is saved; the newsletter and the sheet never hold it up for more than 2.5 seconds or fail it */
+    const sub = lead.marketingConsent ? subscribe(email).catch((e) => console.error("newsletter failed", e && e.message, page)) : null;
+    await settle(Promise.all([sheet, sub]));
     return res.status(200).json({ ok: true });
   } catch (e) {
     console.error("wix webhook failed", e && e.message, page);
+    await settle(sheet);
     return res.status(502).json({ ok: false });
   }
 };
