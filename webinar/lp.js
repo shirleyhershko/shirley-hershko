@@ -120,24 +120,7 @@
     },{passive:true});
   }
 
-  /* floating sign-up button (27.10.2026, Shirley): the hero button's own words, shown once the hero
-     button has scrolled away, hidden again while a form or the footer is on screen */
-  var heroGo=d.querySelector("a[data-go]"), seats=d.querySelectorAll("[data-seat]");
-  if(heroGo && seats.length){
-    var fl=d.createElement("div"), fb=d.createElement("a"), fOn=null;
-    var near=[].slice.call(seats).concat([].slice.call(d.querySelectorAll("footer")));
-    fl.className="fcta"; fl.setAttribute("aria-hidden","true");
-    fb.className="btn"; fb.href=heroGo.getAttribute("href"); fb.textContent=heroGo.textContent.trim(); fb.tabIndex=-1;
-    fl.appendChild(fb); d.body.appendChild(fl);
-    var fShow=function(){
-      var vh=window.innerHeight, on=heroGo.getBoundingClientRect().bottom<0;
-      for(var i=0;on && i<near.length;i++){ var r=near[i].getBoundingClientRect(); if(r.top<vh && r.bottom>0) on=false; }
-      if(on===fOn) return; fOn=on;
-      fl.classList.toggle("is-on",on); fl.setAttribute("aria-hidden",on?"false":"true"); fb.tabIndex=on?0:-1;
-    };
-    window.addEventListener("scroll",fShow,{passive:true}); window.addEventListener("resize",fShow); fShow();
-    fb.addEventListener("click",function(){ setTimeout(function(){ var n=d.getElementById("n1"); try{ if(n) n.focus({preventScroll:true}); }catch(e){} },700); });
-  }
+  /* no floating sign-up button: Shirley asked for it on 27.10.2026 and removed it on 30.10.2026 */
 
   /* smooth jump only on a real click on an in-page link, so scripts and tests scroll instantly */
   var calm=window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;

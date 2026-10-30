@@ -1076,14 +1076,3 @@ html body .power .gk{position:absolute;left:50%;top:50%;width:44%;transform:tran
 
 /* a form button while the registration is on its way */
 .btn:disabled{opacity:.7;cursor:progress;animation:none}
-
-/* floating sign-up button (27.10.2026): slides up once the hero button is gone, hides at the forms (lp.js) */
-.fcta{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;justify-content:center;
-  padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));pointer-events:none;
-  transform:translateY(110%);opacity:0;visibility:hidden;
-  transition:transform .45s var(--ease-out),opacity .3s ease,visibility 0s linear .45s}
-.fcta.is-on{transform:none;opacity:1;visibility:visible;transition:transform .45s var(--ease-out),opacity .3s ease,visibility 0s}
-.fcta .btn{pointer-events:auto;padding:16px 38px;font-size:clamp(16px,1.6vw,19px)}
-.fcta::before{content:"";position:absolute;inset:-26px 0 0;z-index:-1;pointer-events:none;
-  background:linear-gradient(to top,rgba(var(--bg-rgb),.92) 55%,rgba(var(--bg-rgb),0))}
-@media (max-width:560px){.fcta .btn{display:block;width:100%;padding:17px 14px;font-size:clamp(15.5px,4.35vw,19px)}}
