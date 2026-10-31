@@ -133,6 +133,43 @@ html body .product__name{font-style:normal;font-size:clamp(34px,9.4vw,96px);line
 
 /* road map: four stops; the first one shows the Zoom meeting */
 .stop__thumb{display:block;width:min(240px,74%);margin:16px auto 0;border-radius:14px;border:1px solid var(--a2-line);box-shadow:0 20px 40px -20px rgba(0,0,0,.9)}
+/* stops 2 to 4 have no photo, so each shows a small picture of what happens in it (31.10.2026, Shirley: "אין תמונות וצריך להוסיף").
+   The picture sits at the bottom of each card, so the four cards line up. */
+.learn .road--plain .stop{display:flex;flex-direction:column}
+.learn .road--plain .stop__txt{flex:1;display:flex;flex-direction:column;align-items:center}
+.learn .road--plain .stop__txt>p:not(.tag){margin-bottom:16px}
+.learn .road--plain .stop__thumb{margin-top:auto}
+@media (min-width:860px){.learn .road__track{grid-auto-rows:auto;row-gap:clamp(18px,2.4vw,30px)}}
+.stopviz{position:relative;aspect-ratio:16/9;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(90% 100% at 50% 100%,rgba(var(--a1-rgb),.24),transparent 70%),linear-gradient(165deg,#1d1d1d,#0d0d0d)}
+.stopviz svg{display:block}
+.stopviz__pills{display:flex;gap:8px;justify-content:center}
+.stopviz__pills span{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:700;line-height:1.2;color:var(--a2-ink);background:var(--a2-grad)}
+.stopviz__pills svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+/* stop 2: the neurologist, in the clinic or on video */
+.stopviz--doc{grid-template-rows:1fr auto;padding:14px 12px 13px;gap:6px}
+.stopviz--doc .steth{width:56px;height:56px;fill:none;stroke:var(--ivory);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 12px rgba(var(--a1-rgb),.45))}
+.stopviz--doc .steth .bell{fill:var(--a1);stroke:var(--a1)}
+/* stop 3: the written report, two sheets */
+.stopviz--report .sheet{position:absolute;top:16px;left:50%;width:44%;height:120%;margin-left:-22%;border-radius:6px;background:#f7f1e8;box-shadow:0 18px 30px -10px rgba(0,0,0,.85)}
+.stopviz--report .sheet--back{transform:translateX(-16px) rotate(-8deg);background:#d8cfc2}
+.stopviz--report .sheet--front{transform:rotate(3deg);display:flex;flex-direction:column;gap:5px;padding:9px 9px 0;text-align:right}
+.sheet__head{display:flex;align-items:center;gap:5px}
+.sheet__logo{flex:none;width:16px;height:16px;border-radius:50%;background:#000 url(assets/logo-brain.webp) center/86% no-repeat}
+.sheet__title{font-size:10.5px;font-weight:900;line-height:1;color:#141414}
+.sheet__rule{display:block;width:62%;height:2px;background:var(--a1)}
+.sheet__line{display:block;height:3px;border-radius:2px;background:#ddd4c7}
+.sheet__line.s{width:68%}
+.sheet__row{display:flex;align-items:center;gap:4px;font-size:9px;font-weight:700;line-height:1;color:#2b2b2b}
+.sheet__row svg{flex:none;width:9px;height:9px}
+.sheet__row circle{fill:var(--a1)}
+.sheet__row path{fill:none;stroke:#fff;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+/* stop 4: three months of follow up, by phone or mail */
+.stopviz--follow{grid-template-rows:1fr auto;padding:14px 12px 13px;gap:8px}
+.months{position:relative;display:flex;gap:22px;justify-content:center}
+.months::before{content:"";position:absolute;top:16px;inset-inline:18px;border-top:2px dashed rgba(var(--a1-rgb),.75)}
+.months span{position:relative;display:grid;justify-items:center;gap:4px;font-size:11.5px;font-weight:500;line-height:1;color:var(--t-mid)}
+.months b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;font-size:16px;font-weight:900;color:var(--ivory);background:#141414;border:2px solid var(--a1);box-shadow:0 0 14px rgba(var(--a1-rgb),.5)}
 .vidline{max-width:520px;margin:clamp(34px,5vw,56px) auto 0;font-weight:700;font-size:clamp(18px,2.2vw,21px);text-align:center;color:var(--t-hi);text-wrap:balance}
 .talkvid--tall{max-width:380px;margin-top:16px}
 .talkvid--tall .talkvid__frame{aspect-ratio:9/16}
@@ -144,39 +181,6 @@ html body .product__name{font-style:normal;font-size:clamp(34px,9.4vw,96px);line
 .seat__thanks{margin-top:18px;padding:16px 18px;border-radius:16px;font-weight:500;font-size:clamp(16px,1.9vw,18px);line-height:1.6;color:var(--t-hi);background:rgba(var(--ok-rgb),.12);border:1px solid rgba(var(--ok-rgb),.45)}
 .seat__privacy{margin-top:12px;font-size:14px;line-height:1.5;color:var(--t-mid);text-align:center}
 .seat__note{margin:0 0 16px;font-weight:700;font-size:clamp(17px,2vw,19px);text-align:center;color:var(--t-hi);text-wrap:balance}
-
-/* the messages people sent, shown the way they arrived: a WhatsApp chat with "אנשי הקשב" */
-.wa-sec{padding-block:clamp(64px,8vw,110px)}
-.wawall{display:grid;gap:18px;max-width:860px;margin:0 auto;align-items:start}
-@media (min-width:760px){.wawall{grid-template-columns:1fr 1fr}}
-/* one message on its own, beside the sentence it proves */
-.wa--solo{max-width:430px;margin:clamp(30px,4.4vw,50px) auto 0}
-.wa{border-radius:22px;overflow:hidden;background:#0b141a;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 80px -40px rgba(0,0,0,.95);
-  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;text-align:right}
-.wa__top{display:flex;align-items:center;gap:10px;padding:10px 12px;background:#1f2c34;color:#e9edef}
-.wa__back{flex:none;width:20px;height:20px;fill:none;stroke:#aebac1;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.wa__ava{flex:none;width:38px;height:38px;border-radius:50%;background:#000 url(assets/logo-brain.webp) center/88% no-repeat;border:1px solid rgba(255,255,255,.12)}
-.wa__name{flex:1;font-weight:600;font-size:16.5px;line-height:1.2}
-.wa__ic{flex:none;width:21px;height:21px;fill:none;stroke:#aebac1;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
-.wa__body{display:grid;gap:6px;padding:16px 12px 12px;min-height:120px;
-  background:#0b141a radial-gradient(rgba(255,255,255,.035) 1px,transparent 1.4px) 0 0/18px 18px}
-.wa__msg{justify-self:end;position:relative;max-width:88%;padding:8px 10px 6px;border-radius:9px;border-start-end-radius:0;background:#005c4b;color:#e9edef;
-  font-size:clamp(15px,1.6vw,15.5px);line-height:1.55;box-shadow:0 1px .5px rgba(0,0,0,.25)}
-.wa__msg::before{content:"";position:absolute;top:0;inset-inline-end:-7px;width:8px;height:12px;background:#005c4b;clip-path:polygon(0 0,100% 0,100% 100%)}
-.wa__msg p{margin:0}
-.wa__tick{display:block;width:17px;height:11px;margin:2px 0 0 auto;margin-inline-start:auto;margin-inline-end:0}
-.wa__tick path{fill:none;stroke:#53bdeb;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.wa__bar{display:flex;align-items:center;gap:8px;padding:8px 10px 10px;background:#0b141a}
-.wa__in{flex:1;height:38px;border-radius:20px;background:#1f2c34;color:#8696a0;font-size:15px;line-height:38px;padding:0 14px}
-.wa__mic{flex:none;width:38px;height:38px;border-radius:50%;background:#00a884;display:grid;place-items:center}
-.wa__mic svg{width:18px;height:18px;fill:none;stroke:#0b141a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:759px){
-  .wawall{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;
-    margin-inline:calc(-1*clamp(20px,5vw,52px));padding:6px clamp(20px,5vw,52px) 18px}
-  .wawall::-webkit-scrollbar{display:none}
-  .wawall .wa{flex:0 0 86%;scroll-snap-align:center}
-  .wa-sec .pf-dots{display:flex;justify-content:center;gap:8px;margin-top:4px}
-}
 
 /* not only medication: six ways, and the line that ties them */
 .treat{text-align:center}
